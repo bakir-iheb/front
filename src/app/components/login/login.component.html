@@ -3,29 +3,36 @@
     <input type="checkbox" id="check">
     <div class="login form">
       <header>Login</header>
-      <form action="#">
-        <input type="text" placeholder="Enter your email">
-        <input type="password" placeholder="Enter your password">
+      <form (ngSubmit)="onLogin()">
+        <input type="email" placeholder="Enter your email" [(ngModel)]="loginEmail" name="loginEmail" required>
+        <input type="password" placeholder="Enter your password" [(ngModel)]="loginPassword" name="loginPassword"
+          required>
         <a href="#">Forgot password?</a>
-        <input type="button" class="button" value="Login">
+        <button class="mx-3"> login
+        </button>
+
+
       </form>
       <div class="signup">
         <span class="signup">Don't have an account?
-         <label for="check">Signup</label>
+          <label for="check">Signup</label>
         </span>
       </div>
     </div>
     <div class="registration form">
       <header>Signup</header>
-      <form action="#">
-        <input type="text" placeholder="Enter your name">
-        <input type="text" placeholder="Enter your email">
-        <input type="password" placeholder="Enter your password">
-        <input type="button" class="button" value="Signup">
+      <form (ngSubmit)="onSignup()">
+        <input type="text" placeholder="Enter your name" [(ngModel)]="signupName" name="signupName" required>
+        <input type="text" placeholder="Enter your lastname" [(ngModel)]="signupLastname" name="signupLastname"
+          required>
+        <input type="email" placeholder="Enter your email" [(ngModel)]="signupEmail" name="signupEmail" required>
+        <input type="password" placeholder="Enter your password" [(ngModel)]="signupPassword" name="signupPassword"
+          required>
+        <button type="submit" class="button">Signup</button>
       </form>
       <div class="signup">
         <span class="signup">Already have an account?
-         <label for="check">Login</label>
+          <label for="check">Login</label>
         </span>
       </div>
     </div>

@@ -1,22 +1,31 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary custom-header">
-    <div class="container-fluid">
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        @for (link of navLinks; track link.path) {
           <li class="nav-item">
-            <a class="nav-link  header-text"  routerLink="/home">JOININI</a>
+            <a class="nav-link {{link.class}}" routerLink="{{link.path}}">{{link.text}}</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link dest"  routerLink="/destination">Destinations</a>
-          </li>
-        </ul>
-        <form class="d-flex custom-search" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-light" type="submit">Search</button>
-        </form>
-        <form class="d-flex custom-search-buuton" role="search">
-          <button type="button" class="btn btn-outline-light" routerLink="/login" style="margin-right: 20px;">Login</button>
-        </form>
-        <i class='bx bx-user-circle usericon' style="font-size: 50px;color: white;" routerLink="/profile"></i>       
-      </div>
+        }
+      </ul>
+
+      <form class="d-flex custom-search" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-light" type="submit">Search</button>
+      </form>
+
+      @if (currentUser$ | async; as user) {
+        <div class="d-flex align-items-center gap-3">
+          <i class='bx bx-user-circle usericon' 
+             style="font-size: 50px; color: white;" 
+             routerLink="/profile"></i>
+          <button class="btn btn-outline-light" (click)="logout()">Logout</button>
+        </div>
+      } @else {
+        <button type="button" class="btn btn-outline-light" routerLink="/login" style="margin-right: 20px;">
+          Login
+        </button>
+      }
     </div>
-  </nav>
+  </div>
+</nav>
