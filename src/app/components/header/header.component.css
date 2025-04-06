@@ -1,0 +1,33 @@
+.custom-search{
+    margin-right: 40%;
+}
+.custom-search-button{
+    margin-right: 30%;
+}
+.custom-header{
+    background: rgb(0,147,252);
+background: linear-gradient(90deg, rgba(0,147,252,1) 0%, rgba(55,122,187,1) 44%, rgba(252,151,0,1) 86%);
+}
+.header-text{
+    color: white;
+    font-size: 20px;
+    font-family: cursive;
+    font-weight: bold;
+}
+.dest{
+    font-size: 20px;
+    color:white ;
+}
+nav
+{
+    border-bottom-left-radius: 40px;
+}
+
+.usericon{
+    transition: all 0.3s ease;
+}
+
+.usericon:hover{
+    transform: scale(1.1) rotate(5deg);
+  filter: brightness(1.2);
+}

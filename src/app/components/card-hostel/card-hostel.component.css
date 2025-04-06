@@ -1,0 +1,23 @@
+/*.br{
+    border-top: 5px solid red;
+    border-radius: 20px;
+}
+.bg{
+    border-top: 5px solid green;
+    border-radius: 20px;
+}*/
+
+.card {
+    border-radius: 15px;
+    overflow: hidden; 
+  }
+  .card {
+    border-radius: 15px; /* Ton style existant */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition fluide */
+  }
+  
+  /* Effet au survol */
+  .card:hover {
+    transform: translateY(-10px); /* Soulève la carte de 10px */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée */
+  }

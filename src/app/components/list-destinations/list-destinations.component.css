@@ -1,0 +1,30 @@
+/*.custom-card-margin{
+    padding-top:10px;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    padding-bottom: 10px;
+}
+.card-item {
+    display: inline-block;
+    width: 18rem;
+    margin: 0.5rem;
+  } 
+*/
+
+.custom-card-margin {
+    padding: 1rem; 
+  }
+  
+  .card-row {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 1rem; 
+    justify-content: space-between; 
+  }
+  
+  .card-item {
+    flex: 0 0 calc(25% - 0.75rem); 
+    max-width: 18rem;
+  }
+
+
