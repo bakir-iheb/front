@@ -35,4 +35,6 @@ export class ListDestinationsComponent implements OnInit {
   onAdd(): void {
     this.router.navigate(['/add-destination']);
   }
+
+  
 }

@@ -1,1 +1,61 @@
-<p>add-destination works!</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Ajouter une nouvelle destination</h2>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="destinationForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+              
+              <!-- Champ Nom -->
+              <div class="mb-3">
+                <label for="name" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="name" formControlName="name">
+                @if (destinationForm.get('name')?.invalid && destinationForm.get('name')?.touched) {
+                  <div class="text-danger">
+                    Nom requis (3 caractères minimum)
+                  </div>
+                }
+              </div>
+  
+              <!-- Champ Pays -->
+              <div class="mb-3">
+                <label for="country" class="form-label">Pays</label>
+                <input type="text" class="form-control" id="country" formControlName="country">
+                @if (destinationForm.get('country')?.invalid && destinationForm.get('country')?.touched) {
+                  <div class="text-danger">
+                    Pays requis
+                  </div>
+                }
+              </div>
+  
+              <!-- Champ Description -->
+              <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
+              </div>
+  
+              <!-- Champ Image -->
+              <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input type="file" class="form-control" id="image" (change)="onFileChange($event)" accept="image/*">
+                @if (destinationForm.get('image')?.invalid && destinationForm.get('image')?.touched) {
+                  <div class="text-danger">
+                    Image requise
+                  </div>
+                }
+              </div>
+  
+              <!-- Bouton Submit -->
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary" [disabled]="destinationForm.invalid">
+                  Ajouter
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
