@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardHostelComponent } from '../card-hostel/card-hostel';
 import { DestinationService } from '../../services/destination.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-destinations',
@@ -11,7 +12,8 @@ import { DestinationService } from '../../services/destination.service';
   styleUrls: ['./list-destinations.component.css']
 })
 export class ListDestinationsComponent implements OnInit {
-  listdestinations: any[] = []; // Consider creating a proper interface
+  listdestinations: any[] = []; 
+  private router: Router = inject(Router);
 
   constructor(private destinationService: DestinationService) {}
 
@@ -28,5 +30,9 @@ export class ListDestinationsComponent implements OnInit {
         console.error('Error loading destinations:', err);
       }
     });
+  }
+
+  onAdd(): void {
+    this.router.navigate(['/add-destination']);
   }
 }
