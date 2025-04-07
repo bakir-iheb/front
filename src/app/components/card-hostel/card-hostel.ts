@@ -10,4 +10,10 @@ import { RouterLink } from '@angular/router';
 })
 export class CardHostelComponent {
   @Input() hostel:any
-}
+
+    getImageUrl(image: string): string {
+      if (!image) return '';      
+      return image.startsWith('http') ? image : `http://localhost:3000${image}`;
+    }
+
+} 
