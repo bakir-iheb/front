@@ -1,56 +1,76 @@
-<div class="container mt-5 mb-5">
+<div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6">
         <div class="card">
           <div class="card-header bg-primary text-white">
-            <h2 class="mb-0">Ajouter une nouvelle destination</h2>
+            <h2 class="mb-0">Edit Destination</h2>
           </div>
           <div class="card-body">
             <form [formGroup]="destinationForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
               
-              <!-- Champ Nom -->
+              @if (errorMessage) {
+                <div class="alert alert-danger">{{ errorMessage }}</div>
+              }
+  
+              <!-- Name Field -->
               <div class="mb-3">
-                <label for="name" class="form-label">Name </label>
+                <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" id="name" formControlName="name">
                 @if (destinationForm.get('name')?.invalid && destinationForm.get('name')?.touched) {
                   <div class="text-danger">
-                    Nom requis (3 caractères minimum)
+                    Name is required (min 3 characters)
                   </div>
                 }
               </div>
   
-              <!-- Champ Pays -->
+              <!-- Country Field -->
               <div class="mb-3">
                 <label for="country" class="form-label">Country</label>
                 <input type="text" class="form-control" id="country" formControlName="country">
                 @if (destinationForm.get('country')?.invalid && destinationForm.get('country')?.touched) {
                   <div class="text-danger">
-                    Pays requis
+                    Country is required
                   </div>
                 }
               </div>
   
-              <!-- Champ Description -->
+              <!-- Description Field -->
               <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
                 <textarea class="form-control" id="description" rows="3" formControlName="description"></textarea>
               </div>
   
-              <!-- Champ Image -->
+              <!-- Rating Field -->
+              <div class="mb-3">
+                <label for="rating" class="form-label">Rating (1-5)</label>
+                <input type="number" class="form-control" id="rating" formControlName="rating" min="1" max="5">
+              </div>
+  
+              <!-- Price Range Field -->
+              <div class="mb-3">
+                <label for="price_range" class="form-label">Price Range</label>
+                <input type="text" class="form-control" id="price_range" formControlName="price_range">
+              </div>
+  
+              <!-- Image Field -->
               <div class="mb-3">
                 <label for="image" class="form-label">Image</label>
                 <input type="file" class="form-control" id="image" (change)="onFileChange($event)" accept="image/*">
-                @if (destinationForm.get('image')?.invalid && destinationForm.get('image')?.touched) {
-                  <div class="text-danger">
-                    Image requise
-                  </div>
-                }
+                <small class="text-muted">Leave empty to keep current image</small>
               </div>
   
-              <!-- Bouton Submit -->
+              <!-- Submit Button -->
               <div class="d-grid gap-2">
-                <button type="submit" class="btn btn-primary" [disabled]="destinationForm.invalid">
-                  Ajouter
+                <button type="submit" class="btn btn-primary" [disabled]="isLoading">
+                  @if (isLoading) {
+                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                    Saving...
+                  } @else {
+                    Save Changes
+                  }
+                </button>
+                <button type="button" class="btn btn-secondary" (click)="router.navigate(['/destinations'])">
+                  Cancel
                 </button>
               </div>
             </form>

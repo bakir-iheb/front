@@ -19,12 +19,12 @@
     display: flex;
     flex-wrap: wrap; 
     gap: 1rem; 
-    justify-content: space-between; 
+    justify-content: center; 
   }
   
   .card-item {
-    flex: 0 0 calc(25% - 0.75rem); 
-    max-width: 18rem;
+    flex: 1 1 250px; /* largeur de base */
+    max-width: 300px;
   }
 
 

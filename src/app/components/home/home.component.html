@@ -39,10 +39,10 @@
 </div>
 <!--le code des cards-->
 <h2 style="margin-left: 2.5%;">Recommandations</h2>
-<div class="custom-card-margin">
-<div class="d-flex justify-content-center justify-content-between">
+<div class="custom-card-margin ">
+<div class="d-flex gap-3">
   @for (h of destinations; track $index) {
-          <app-card-hostel [hostel]="h"></app-card-hostel>
+          <app-card-hostel [destination]="h" (deleted)="removeFromList($event)" (edited)="onEditDestination($event)"></app-card-hostel>
   }
   <div class="card more" >
         <div class="card-body" style="display: flex; justify-content: center; align-items: center;">
