@@ -1,41 +1,67 @@
 <div class="container">
+    <button [routerLink]="['/join-destination',destinationId]"  >
+        join destination
+    </button>
+    <!-- Date Selection Card -->
     <div class="card">
-        <div class="container-fliud">
-            <div class="wrapper row">
-                <div class="preview col-md-6">
-                    
-                    <div class="preview-pic tab-content">
-                      <div class="tab-pane active" id="pic-1"><img src={{destination.image}} /></div>
-                    </div>
-                </div>
-                <div class="details col-md-6">
-                    <h3 class="product-title">{{destination.name}}</h3>
-                    <p class="product-description">{{destination.desc}}</p>
-                    <h5 class="colors">location :{{destination.location}}</h5>
-                    <h5 class="colors">price range :{{destination.price_range}}</h5>
-                    <h5 class="colors">rating :{{destination.rating}}</h5>
-                </div>
-            </div>
+      <div class="container-fluid">
+        <div class="wrapper row">
+          <div class="date-section">
+            <label for="arrivee">Arrivée</label>
+            <input 
+              type="date" 
+              id="arrivee" 
+              name="arrivee"
+              [(ngModel)]="startDate">
+          </div>
+          <div class="date-section">
+            <label for="depart">Départ</label>
+            <input 
+              type="date" 
+              id="depart" 
+              name="depart"
+              [(ngModel)]="endDate">
+          </div>
+          <button (click)="checkAvailability()">Vérifier la disponibilité</button>
         </div>
+      </div>
     </div>
-</div>
-
-
-<div class="container">
-    <div class="card">
-        <div class="container-fliud">
-            <div class="wrapper row">
-                <div class="date-section">
-                    <label for="arrivee" >Arrivée</label>
-                    <input type="date" id="arrivee" name="arrivee">
+  
+    <!-- Results Section -->
+    @if (error) {
+      <div class="alert alert-danger mt-3">
+        {{ error }}
+      </div>
+    }
+  
+    @if (trips.length > 0) {
+      <div class="card mt-3">
+        <div class="container-fluid">
+          <h3>Available Trips</h3>
+          @for (trip of trips; track trip._id) {
+            <div class="trip-item row mb-3">
+              <div class="col-md-6">
+                <div class="preview-pic">
+                  <img [src]="getImageUrl(trip.destination.image)" alt="{{trip.destination.name}}" />
                 </div>
-                <div class="date-section">
-                    <label for="depart">Départ</label>
-                    <input type="date" id="depart" name="depart" class="depart" >
-                </div>
-                <button routerLink="/groupe">Vérifier la disponibilité d’un groupe</button>
+              </div>
+              <div class="col-md-6">
+                <h4>{{trip.destination.name}}</h4>
+                <p>{{trip.destination.description}}</p>
+                <p>Départ: {{trip.departureDate | date}}</p>
+                <p>Retour: {{trip.returnDate | date}}</p>
+                <!--user-->
+                {{trip.user.name}}
+                {{trip.user.phone}}
+
+              </div>
             </div>
+          }
         </div>
-    </div>
-</div>
-
+      </div>
+    } @else if (!error && startDate && endDate) {
+      <div class="alert alert-info mt-3">
+        Aucun voyage disponible pour ces dates
+      </div>
+    }
+  </div>

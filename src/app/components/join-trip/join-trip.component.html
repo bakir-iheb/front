@@ -1,0 +1,33 @@
+<div class="join-trip-container">
+    <h2>Join Trip</h2>
+    
+    <form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="departureDate">Departure Date</label>
+        <input 
+          type="date" 
+          id="departureDate" 
+          formControlName="departureDate"
+          [class.invalid]="tripForm.get('departureDate')?.touched && tripForm.get('departureDate')?.invalid">
+      </div>
+  
+      <div class="form-group">
+        <label for="returnDate">Return Date</label>
+        <input 
+          type="date" 
+          id="returnDate" 
+          formControlName="returnDate"
+          [class.invalid]="tripForm.get('returnDate')?.touched && tripForm.get('returnDate')?.invalid">
+      </div>
+      
+      @if (error) {
+        <div class="error" >{{ error }}</div>
+      }
+  
+      <button 
+        type="submit" 
+        [disabled]="tripForm.invalid || loading">
+        {{ loading ? 'Creating...' : 'Create Trip' }}
+      </button>
+    </form>
+  </div>

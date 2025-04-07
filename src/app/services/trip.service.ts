@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -51,11 +51,14 @@ export class TripService {
     });
   }
 
-  // Get trips between dates (authenticated users)
-  getTripsBetweenDates(startDate: string, endDate: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.API_URL}/dates`, {
-      params: { startDate, endDate },
-      headers: this.getAuthHeaders()
+  getAvailableTrips(destinationId: string, startDate: string, endDate: string): Observable<any[]> {
+    const params = new HttpParams()
+      .set('startDate', startDate)
+      .set('endDate', endDate);
+
+    return this.http.get<any[]>(`${this.API_URL}/available/${destinationId}`, {
+      headers: this.getAuthHeaders(),
+      params: params
     });
   }
 }

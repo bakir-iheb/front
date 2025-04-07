@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class DestinationService{
   private readonly http = inject(HttpClient);
-  private readonly API_URL = 'http://localhost:3000/api/destinations';
+  private readonly API_URL = 'http://localhost:3000/api/destinations/';
 
   private getAuthHeaders() {
     const token = localStorage.getItem('authToken');
