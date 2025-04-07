@@ -49,7 +49,7 @@ export class AddDestinationComponent {
     if (image) {
       formData.append('image', image);
     }
-
+    
     this.destinationService.createDestination(formData).subscribe({
       next: () => {
         alert('Destination ajoutée avec succès');

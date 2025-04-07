@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CardHostelComponent } from '../card-hostel/card-hostel';
 import { DestinationService } from '../../services/destination.service';
 import { Router } from '@angular/router';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-list-destinations',
@@ -14,11 +15,15 @@ import { Router } from '@angular/router';
 export class ListDestinationsComponent implements OnInit {
   listdestinations: any[] = []; 
   private router: Router = inject(Router);
+  private userService = inject(UsersService);  // Add this line to get the current user
+  currentUser$ = this.userService.currentUser$;
 
   constructor(private destinationService: DestinationService) {}
 
   ngOnInit(): void {
     this.loadDestinations();
+    // Add this line to check if the user is logged in before displaying the list
+
   }
 
   loadDestinations(): void {

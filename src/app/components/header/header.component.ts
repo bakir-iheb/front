@@ -1,7 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { UsersService } from '../../services/users.service';
-import { User } from '../../models/user';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
