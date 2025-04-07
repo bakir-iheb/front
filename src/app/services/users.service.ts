@@ -17,6 +17,16 @@ export class UsersService {
   private currentUserSubject = new BehaviorSubject<User | null>(null); 
   currentUser$ = this.currentUserSubject.asObservable(); 
 
+  constructor(){
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      this.verifyToken(token).subscribe((res) => {
+   
+          this.setCurrentUser(res.user)
+        } 
+      )    
+    }
+  }
   signup(user: Auth): Observable<User> {
     return this.http.post<User>(this.API_URL + 'signup', user);
   }
@@ -30,8 +40,8 @@ export class UsersService {
     return this.http.post<any>(this.API_URL + 'verifyToken', { token });
   }
 
-  getUserById(userId: string): Observable<User>{
-    return this.http.get<User>(this.API_URL + "/" + userId);
+  getUserById(id: string): Observable<User>{
+    return this.http.get<User>(this.API_URL + "/" + id);
   }
 
   logout(): void {
