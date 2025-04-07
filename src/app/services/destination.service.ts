@@ -46,7 +46,7 @@ export class DestinationService{
 
   // Delete any (admin only)
   deleteDestination(id: string): Observable<any> {
-    return this.http.delete(`${this.API_URL}${id}`, {
+    return this.http.delete(`${this.API_URL}/${id}`, {
       headers: this.getAuthHeaders()
     });
   }

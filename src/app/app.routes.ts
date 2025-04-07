@@ -6,6 +6,7 @@ import { DestinationDetailsComponent } from './components/destination-details/de
 import { GroupeComponent } from './components/groupe/groupe.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AddDestinationComponent } from './components/add-destination/add-destination.component';
+import { EditDestinationComponent } from './components/edit-destination/edit-destination.component';
 
 
 export const routes: Routes = [
@@ -17,5 +18,6 @@ export const routes: Routes = [
     {path : "destdetail/:id" , title : "destdetail" , component:DestinationDetailsComponent},
     {path : "groupe" , title : "groupe" , component:GroupeComponent},
     {path : "profile" , title : "profile" ,component:ProfileComponent },
+    {path: 'edit-destination/:id',component: EditDestinationComponent}
     
 ];

@@ -41,5 +41,12 @@ export class ListDestinationsComponent implements OnInit {
     this.router.navigate(['/add-destination']);
   }
 
+  removeFromList(id: string) {
+    this.listdestinations = this.listdestinations.filter(d => d._id !== id);
+  }
+  
+  trackById(index: number, item: any): string {
+    return item._id;
+  }
   
 }
