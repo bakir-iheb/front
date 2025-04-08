@@ -5,12 +5,9 @@ import { ListDestinationsComponent } from './components/list-destinations/list-d
 import { GroupeComponent } from './components/groupe/groupe.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AddDestinationComponent } from './components/add-destination/add-destination.component';
-<<<<<<< HEAD
 import { DestinationDetailsComponent } from './components/destination-details/destination-details.component';
 import { JoinTripComponent } from './components/join-trip/join-trip.component';
-=======
 import { EditDestinationComponent } from './components/edit-destination/edit-destination.component';
->>>>>>> ab581740000a1cd3744162f891fa237f2b716f8c
 
 
 export const routes: Routes = [

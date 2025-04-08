@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-<div class="card" style="width: 18rem;" [ngClass]="{'bg': hostel.rating > 4.5 , 'br': hostel.rating<= 4.5   }">
-    <img [src]="getImageUrl(hostel.image)" class="card-img-top" alt="">
-    <div class="card-body">
-      <h5 class="card-title">{{hostel.name}}</h5>
-      <p class="card-text">
-        Location: {{hostel.location}}<br>
-        Price Range: {{hostel.price_range}}<br>
-        Rating: {{hostel.rating}}/5
-      </p>
-      <a [routerLink]="['/destdetail/',hostel._id]" routerLinkActive="router-link-active"  class="btn btn-primary">Joinini</a>
-=======
 <div class="card" style="width: 18rem;" [ngClass]="{'bg': destination.rating > 4.5 , 'br': destination.rating<= 4.5}">
   <img [src]="getImageUrl(destination.image)" class="card-img-top" alt="">
   <div class="card-body">
@@ -27,7 +15,6 @@
       <button class="btn btn-danger" (click)="onDelete()">
         <i class="fas fa-trash"></i> <!-- Icône de corbeille -->
       </button>
->>>>>>> ab581740000a1cd3744162f891fa237f2b716f8c
     </div>
   </div>
 </div>

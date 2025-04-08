@@ -22,7 +22,7 @@ export class EditDestinationComponent implements OnInit {
     private fb: FormBuilder,
     private destinationService: DestinationService,
     private route: ActivatedRoute,
-    private router: Router
+    public router: Router
   ) {
     this.destinationForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
